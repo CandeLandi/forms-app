@@ -39,6 +39,25 @@ export class BasicPageComponent implements OnInit {
       && this.myForm.controls[field].touched;
   }
 
+  getFieldError(field: string): string | null {
+
+    if (!this.myForm.controls[field]) return null;
+
+    const errors = this.myForm.controls[field].errors || {};//devuelvo un objeto vacio para evitar usar siempre ?
+
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return 'Este campo es requerido';
+        case 'minlenght':
+          return `Mínimo ${errors['minlenght'].requiredLength} caracters.`
+      }
+    }
+
+    return 'Hola mundo';
+
+  }
+
   onSave(): void {
 
     if (this.myForm.invalid) {
@@ -49,11 +68,6 @@ export class BasicPageComponent implements OnInit {
     console.log(this.myForm.value)
 
     this.myForm.reset();
-  }
-
-  getFieldError(field: string): string | null {
-    if (!this.myForm.controls[field]) return null;
-
   }
 
 }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BasicPageComponent } from './pages/basic-page/basic-page.component';
-import { DynamicPageComponent } from '../auth/pages/dynamic-page/dynamic-page.component';
-import { SwitchesPageComponent } from '../auth/pages/switches-page/switches-page.component';
+import { DynamicPageComponent } from './dynamic-page/dynamic-page.component';
+import { SwitchesPageComponent } from './switches-page/switches-page.component';
 
 const routes: Routes = [
   {
