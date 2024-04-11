@@ -60,7 +60,14 @@ export class DynamicPageComponent {
   onAddToFavorites(): void {
     if (this.newFavorite.invalid) return;
 
-    console.log(this.newFavorite.value)
+    const newGame = this.newFavorite.value;
+
+    /*  this.favoriteGames.push( new FormControl( newGame, )) */
+    this.favoriteGames.push(
+      this.fb.control( newGame, Validators.required )
+    );
+
+    this.newFavorite.reset();
   }
 
   onDeleteFavorite(index: number): void {
@@ -74,6 +81,7 @@ export class DynamicPageComponent {
       return;
     }
 
+    (this.myForm.controls['favoriteGames'] as FormArray ) = this.fb.array([]);
     this.myForm.reset()
   }
 }
